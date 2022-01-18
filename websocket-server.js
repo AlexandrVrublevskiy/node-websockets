@@ -26,12 +26,14 @@ webSocketServer.on('connection', ws => {
           });
     });
 
-    ws.on("error", e => ws.send(e));
+    ws.on("error", e => {
+      logger.log('error', e);
+    });
 
-    ws.send(JSON.stringify({ "test" : "Hi there, I am a WebSocket server"}));
+    ws.send('{ "start" : "Successful connection to WebSocket server"}');
 });
 
-app.get('/ws', (req, res) => {
+app.get('/ws/', (req, res) => {
       res.sendFile(__dirname + "index.html");
   })
 
@@ -42,7 +44,10 @@ app.post('/api/send-cnt', (req, res) => {
     res.sendStatus(200);
 } )
 
-logger.log('error', 'test error message %s', 'my string');
-
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  logger.log('error', err.stack);
+  res.status(500).send('Something broke!');
+});
 
 server.listen(3000, () => console.log("Server started"))
