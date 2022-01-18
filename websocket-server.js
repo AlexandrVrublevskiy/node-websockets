@@ -35,14 +35,14 @@ webSocketServer.on('connection', ws => {
 
 app.get('/ws/', (req, res) => {
       res.sendFile(__dirname + "index.html");
-  })
+})
 
 app.post('/api/send-cnt', (req, res) => {
     webSocketServer.clients.forEach(client => {
       client.send(JSON.stringify(req.body));
     });
     res.sendStatus(200);
-} )
+})
 
 app.use(function(err, req, res, next) {
   console.error(err.stack);
