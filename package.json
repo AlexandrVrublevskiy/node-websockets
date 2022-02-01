@@ -5,11 +5,12 @@
   "main": "websocket-server.js",
   "dependencies": {
     "express": "^4.17.2",
+    "express-basic-auth": "^1.2.1",
     "winston": "^3.4.0",
     "ws": "^8.4.0"
   },
-  "devDependencies": {},
   "scripts": {
+    "start": "node websocket-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

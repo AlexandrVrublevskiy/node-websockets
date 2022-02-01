@@ -12,8 +12,8 @@
   <meta property="og:title" content="A Basic HTML5 Template">
   <meta property="og:type" content="website">
 
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!--<link rel="icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">-->
 </head>
 
 <body>
@@ -25,15 +25,16 @@
   <script>
         let reconnectInterval = 10000;
         let webSocketConnection = function() {
-            const wsConnection = new WebSocket("ws://localhost:3000");
+            const wsConnection = new WebSocket("wss://localhost:3001/wss");
 
             wsConnection.onopen = function() {
                 console.log("Соединение установлено.");
+                wsSend('{"executorId":41}');
             };
 
 
             wsConnection.onmessage = function(event) {
-                    let data = event.data
+                    let data = event.data;
                     console.log(JSON.parse(data));
                     document.getElementById('message').textContent = data
 
