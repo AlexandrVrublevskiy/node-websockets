@@ -1,16 +1,16 @@
 {
   "name": "node_websockets",
   "version": "1.0.0",
-  "description": "",
   "main": "websocket-server.js",
   "dependencies": {
     "express": "^4.17.2",
     "express-basic-auth": "^1.2.1",
+    "nodemon": "^2.0.15",
     "winston": "^3.4.0",
     "ws": "^8.4.0"
   },
   "scripts": {
-    "start": "node websocket-server.js",
+    "start": "node ./node_modules/nodemon/bin/nodemon.js websocket-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +22,6 @@
   "bugs": {
     "url": "https://github.com/AlexandrVrublevskiy/node-websockets/issues"
   },
-  "homepage": "https://github.com/AlexandrVrublevskiy/node-websockets#readme"
+  "homepage": "https://github.com/AlexandrVrublevskiy/node-websockets#readme",
+  "description": ""
 }

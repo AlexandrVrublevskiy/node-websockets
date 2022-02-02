@@ -29,13 +29,17 @@
 
             wsConnection.onopen = function() {
                 console.log("Соединение установлено.");
-                wsSend('{"executorId":41}');
+                //wsSend(`{"executorId":${ Math.floor(Math.random() * 100) + 1}}`);
+                wsSend(`{"executorId": 100}`)
             };
 
 
             wsConnection.onmessage = function(event) {
                     let data = event.data;
                     console.log(JSON.parse(data));
+                    if (JSON.parse(data).empty === 'empty') {
+                        console.log('need to call ajax')
+                    }
                     document.getElementById('message').textContent = data
 
                 /*if (event.data instanceof Blob) {
@@ -71,11 +75,11 @@
                 }
             };
 
-            let userName = 'Test';
+            /*let userName = 'Test';
             const sendMessage = (message) => { 
                 console.log(JSON.stringify({ event: "chat-message", payload: { userName, message }}))
                 wsConnection.send(JSON.stringify({ event: "chat-message", payload: { userName, message }})) 
-            };
+            };*/
         }
 
         webSocketConnection();
