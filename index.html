@@ -30,14 +30,14 @@
             wsConnection.onopen = function() {
                 console.log("Соединение установлено.");
                 //wsSend(`{"executorId":${ Math.floor(Math.random() * 100) + 1}}`);
-                wsSend(`{"executorId": 100}`)
+                //wsSend(`{"executorId": 100}`)
             };
 
 
             wsConnection.onmessage = function(event) {
                     let data = event.data;
                     console.log(JSON.parse(data));
-                    if (JSON.parse(data).empty === 'empty') {
+                    if (JSON.parse(data).cache === 'empty') {
                         console.log('need to call ajax')
                     }
                     document.getElementById('message').textContent = data
